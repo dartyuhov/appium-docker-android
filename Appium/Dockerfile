@@ -111,6 +111,16 @@ ENV ATD_VERSION=$ATD_VERSION
 RUN wget -nv -O RemoteAppiumManager.jar "https://github.com/AppiumTestDistribution/ATD-Remote/releases/download/${ATD_VERSION}/RemoteAppiumManager-${ATD_VERSION}.jar"
 
 #==================================
+# Install opencv
+#==================================
+
+RUN apt-get -y install cmake && \
+    apt-get install -y git && \
+    apt-get install -y build-essential && \
+    apt-get install g++ && \
+    npm i -g opencv4nodejs --unsafe-perm=true --allow-root
+
+#==================================
 # Fix Issue with timezone mismatch
 #==================================
 ENV TZ="US/Pacific"
@@ -140,6 +150,7 @@ RUN chmod +x /root/entry_point.sh && \
     chmod +x /root/generate_config.sh && \
     chmod +x /root/wireless_connect.sh && \
     chmod +x /root/wireless_autoconnect.sh
+
 
 #========================================
 # Run xvfb and appium server
