@@ -41,7 +41,6 @@ if [ "$CHROMEDRIVER_AUTODOWNLOAD" = true ]; then
     CMD+=" --allow-insecure chromedriver_autodownload"
 fi
 
-adb forward tcp:$ALT_UNITY_PORT tcp:13000
 pkill -x xvfb-run
 rm -rf /tmp/.X99-lock
 
