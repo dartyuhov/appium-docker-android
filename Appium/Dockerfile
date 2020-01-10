@@ -144,13 +144,8 @@ COPY entry_point.sh \
      generate_config.sh \
      wireless_connect.sh \
      wireless_autoconnect.sh \
+     defaultcapabilities.json \
      /root/
-
-ARG DEFAULT_CAPS
-
-ENV CAPS=$DEFAULT_CAPS
-
-COPY $CAPS /root/defaultcapabilities.json
 
 RUN chmod +x /root/entry_point.sh && \
     chmod +x /root/generate_config.sh && \

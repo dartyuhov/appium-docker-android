@@ -1,0 +1,5 @@
+{
+  "newCommandTimeout": 600,
+  "adbExecTimeout": 300000,
+  "autoLaunch": false
+}
