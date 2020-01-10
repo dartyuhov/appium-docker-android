@@ -146,11 +146,16 @@ COPY entry_point.sh \
      wireless_autoconnect.sh \
      /root/
 
+ARG DEFAULT_CAPS
+
+ENV CAPS=$DEFAULT_CAPS
+
+COPY $CAPS /root/defaultcapabilities.json
+
 RUN chmod +x /root/entry_point.sh && \
     chmod +x /root/generate_config.sh && \
     chmod +x /root/wireless_connect.sh && \
-    chmod +x /root/wireless_autoconnect.sh
-
+    chmod +x /root/wireless_autoconnect.sh 
 
 #========================================
 # Run xvfb and appium server
