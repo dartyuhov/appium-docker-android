@@ -120,6 +120,11 @@ RUN apt-get -y install cmake && \
     apt-get install g++ && \
     npm i -g opencv4nodejs --unsafe-perm=true --allow-root
 
+RUN apt-get -y install openssh-server && \ 
+	apt-get -y install sshpass    
+
+RUN useradd -p "$(openssl passwd -1 ubuntu)" -rm -d /home/ssh-user -g root ssh-user
+
 #==================================
 # Fix Issue with timezone mismatch
 #==================================
@@ -136,7 +141,7 @@ RUN echo "${TZ}" > /etc/timezone
 #===============
 EXPOSE 4723
 EXPOSE 4567
-
+EXPOSE 22
 #====================================================
 # Scripts to run appium and connect to Selenium Grid
 #====================================================
